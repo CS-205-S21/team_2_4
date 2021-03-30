@@ -14,9 +14,9 @@ SOURCES += \
     ./backend/*.cpp 
 
 HEADERS += \
-    ./database/*.cpp \
-    ./gui/*.cpp \
-    ./backend/*.cpp 
+    ./database/*.h \
+    ./gui/*.h \
+    ./backend/*.h
 
 FORMS += \
     mainwindow.ui
