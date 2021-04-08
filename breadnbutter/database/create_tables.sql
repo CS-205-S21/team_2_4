@@ -10,8 +10,8 @@ CREATE TABLE Pet (
   name TEXT, 
   location TEXT, 
   shelter_id INTEGER NOT NULL, 
+  pet_attribute_id INTEGER NOT NULL FOREIGN KEY,
   FOREIGN KEY(shelter_id) REFERENCES Shelter(shelter_id),
-  pet_attribute_id INTEGER NOT NULL FOREIGN KEY
 );
 
 CREATE TABLE Pet_Attributes (
