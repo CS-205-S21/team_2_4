@@ -1,36 +1,36 @@
-CREATE TABLE Shelter (
-  shelter_id INTEGER NOT NULL,
+CREATE TABLE [IF NOT EXISTS] Shelter (
+  shelter_id INTEGER UNIQUE NOT NULL PRIMARY KEY,
   name TEXT,
-  location,
-  email
+  location TEXT,
+  email TEXT
 );
 
-CREATE TABLE Pet (
-  pet_id, 
-  name, 
-  location, 
-  shelter_id, 
-  pet_attribute_id
+CREATE TABLE [IF NOT EXISTS] Pet (
+  pet_id INTEGER UNIQUE NOT NULL PRIMARY KEY, 
+  name TEXT, 
+  location TEXT, 
+  shelter_id INTEGER NOT NULL FOREIGN KEY, 
+  pet_attribute_id INTEGER NOT NULL FOREIGN KEY
 );
 
-CREATE TABLE Pet_Attributes (
-  Pet_Attribute_id, 
-  Age,
-  Breed, 
-  Color, 
-  Hair_Length, 
-  Weight, 
-  Origin, 
-  Hypoallergenic, 
-  Description
+CREATE TABLE [IF NOT EXISTS] Pet_Attributes (
+  Pet_Attribute_id INTEGER UNIQUE NOT NULL PRIMARY KEY, 
+  Age INTEGER,
+  Breed TEXT, 
+  Color TEXT, 
+  Hair_Length TEXT, 
+  Weight INTEGER, 
+  Origin TEXT, 
+  Hypoallergenic TEXT, 
+  Description TEXT
 );
 
-CREATE TABLE Adopter (
-  adopter_id,
-  name,
-  email,
-  adopter_preferences_id,
-  weight,
-  origin,
-  hypoallergenic
+CREATE TABLE [IF NOT EXISTS] Adopter (
+  adopter_id INTEGER UNIQUE NOT NULL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT,
+  adopter_preferences_id INTEGER FOREIGN KEY,
+  weight INTEGER,
+  origin TEXT,
+  hypoallergenic TEXT
 );
