@@ -8,10 +8,10 @@ CREATE TABLE Shelter (
 CREATE TABLE Pet (
   pet_id INTEGER UNIQUE NOT NULL PRIMARY KEY, 
   name TEXT, 
-  location TEXT, 
-  shelter_id INTEGER NOT NULL, 
+  location TEXT,  
   pet_attribute_id INTEGER NOT NULL FOREIGN KEY,
-  FOREIGN KEY(shelter_id) REFERENCES Shelter(shelter_id),
+  shelter_id INTEGER NOT NULL,
+  FOREIGN KEY(shelter_id) REFERENCES Shelter(shelter_id)
 );
 
 CREATE TABLE Pet_Attributes (
