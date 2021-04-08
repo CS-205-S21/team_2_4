@@ -11,12 +11,14 @@ CONFIG += c++11
 SOURCES += \
     ./database/*.cpp \
     ./gui/*.cpp \
-    ./backend/*.cpp 
+    ./backend/*.cpp  \
+    database/db_tool.cpp
 
 HEADERS += \
     ./database/*.h \
     ./gui/*.h \
-    ./backend/*.h
+    ./backend/*.h \
+    database/db_tool.h
 
 FORMS += \
     mainwindow.ui
