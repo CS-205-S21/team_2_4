@@ -9,7 +9,8 @@ CREATE TABLE Pet (
   pet_id INTEGER UNIQUE NOT NULL PRIMARY KEY, 
   name TEXT, 
   location TEXT, 
-  shelter_id INTEGER NOT NULL FOREIGN KEY, 
+  shelter_id INTEGER NOT NULL, 
+  FOREIGN KEY(shelter_id) REFERENCES Shelter(shelter_id),
   pet_attribute_id INTEGER NOT NULL FOREIGN KEY
 );
 
@@ -29,7 +30,8 @@ CREATE TABLE Adopter (
   adopter_id INTEGER UNIQUE NOT NULL PRIMARY KEY,
   name TEXT NOT NULL,
   email TEXT,
-  adopter_preferences_id INTEGER FOREIGN KEY,
+  adopter_preferences_id INTEGER,
+  FOREIGN KEY(adopter_preferences_id) REFERENCES Pet_Attributes(Pet_Attribute_id),
   weight INTEGER,
   origin TEXT,
   hypoallergenic TEXT
