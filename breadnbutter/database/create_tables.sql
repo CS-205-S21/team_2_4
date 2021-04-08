@@ -5,15 +5,6 @@ CREATE TABLE Shelter (
   email TEXT
 );
 
-CREATE TABLE Pet (
-  pet_id INTEGER UNIQUE NOT NULL PRIMARY KEY, 
-  name TEXT, 
-  location TEXT,  
-  pet_attribute_id INTEGER NOT NULL FOREIGN KEY,
-  shelter_id INTEGER NOT NULL,
-  FOREIGN KEY(shelter_id) REFERENCES Shelter(shelter_id)
-);
-
 CREATE TABLE Pet_Attributes (
   Pet_Attribute_id INTEGER UNIQUE NOT NULL PRIMARY KEY, 
   Age INTEGER,
@@ -26,13 +17,23 @@ CREATE TABLE Pet_Attributes (
   Description TEXT
 );
 
+CREATE TABLE Pet (
+  pet_id INTEGER UNIQUE NOT NULL PRIMARY KEY, 
+  name TEXT, 
+  location TEXT,  
+  pet_attribute_id INTEGER NOT NULL,
+  shelter_id INTEGER NOT NULL,
+  FOREIGN KEY(pet_attribute_id) REFERENCES Pet_Attributes(Pet_Attribute_id),
+  FOREIGN KEY(shelter_id) REFERENCES Shelter(shelter_id)
+);
+
 CREATE TABLE Adopter (
   adopter_id INTEGER UNIQUE NOT NULL PRIMARY KEY,
   name TEXT NOT NULL,
   email TEXT,
   adopter_preferences_id INTEGER,
-  FOREIGN KEY(adopter_preferences_id) REFERENCES Pet_Attributes(Pet_Attribute_id),
   weight INTEGER,
   origin TEXT,
-  hypoallergenic TEXT
+  hypoallergenic TEXT,
+  FOREIGN KEY(adopter_preferences_id) REFERENCES Pet_Attributes(Pet_Attribute_id)
 );
